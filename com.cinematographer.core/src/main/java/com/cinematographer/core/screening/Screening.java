@@ -21,19 +21,27 @@ public class Screening {
 	@OneToMany
 	private Collection<Seat> seats;
 	private Integer hall;
+        private Double prise;
 
 	public Screening() {
 
 	}
 
 	public Screening(String title, Time startTime, Time duration,
-			Collection<Seat> seats, int hall) {
+			Collection<Seat> seats, int hall, double prise) {
 		this.title = title;
 		this.startTime = startTime;
 		this.duration = duration;
 		this.seats = seats;
 		this.hall = hall;
+                this.prise = prise;
 	}
+
+        public Double getPrise()
+        {
+            return prise;
+        }       
+        
 
 	public Time getDuration() {
 		return duration;
@@ -55,6 +63,11 @@ public class Screening {
 		return startTime;
 	}
 
+        public void setPrise(Double prise)
+        {
+            this.prise = prise;
+        }      
+        
 	public void setDuration(Time duration) {
 		this.duration = duration;
 	}
@@ -86,6 +99,7 @@ public class Screening {
 		result = prime * result
 				+ ((startTime == null) ? 0 : startTime.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+                result = prime * result + ((prise == null) ? 0 : prise.hashCode());
 		return result;
 	}
 
@@ -122,6 +136,11 @@ public class Screening {
 			if (other.title != null)
 				return false;
 		} else if (!title.equals(other.title))
+			return false;
+                if (prise == null) {
+			if (other.prise != null)
+				return false;
+		} else if (!prise.equals(other.prise))
 			return false;
 		return true;
 	}

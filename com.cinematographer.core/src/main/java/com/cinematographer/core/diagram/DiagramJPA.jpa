@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings status="GENERATED" jaxb-support="false" id="_14350855599431" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity class="Reservation" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14350855601784">
+        <jpa:attributes>
+            <jpa:id name="screening" attribute-type="com.cinematographer.core.screening.Screening" visibile="true" id="_14350855601935">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+            </jpa:id>
+            <jpa:one-to-many name="seats" target-entity="Seat" collection-type="java.util.Collection" connected-entity-id="_143508556038614" visibile="true" id="_14350855601996"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Screening" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14350855603037">
+        <jpa:table name="SCREENING"/>
+        <jpa:attributes>
+            <jpa:id name="title" attribute-type="java.lang.String" visibile="true" id="_143508556030711">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+            </jpa:id>
+            <jpa:basic name="prise" attribute-type="java.lang.Double" visibile="true" id="_14350855603058"/>
+            <jpa:basic name="duration" attribute-type="java.sql.Time" visibile="true" id="_14350855603079"/>
+            <jpa:basic name="hall" attribute-type="java.lang.Integer" visibile="true" id="_143508556030710"/>
+            <jpa:basic name="startTime" attribute-type="java.sql.Time" visibile="true" id="_143508556030713"/>
+            <jpa:one-to-many name="seats" target-entity="Seat" collection-type="java.util.Collection" connected-entity-id="_143508556038614" visibile="true" id="_143508556030712"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Seat" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_143508556038614">
+        <jpa:attributes>
+            <jpa:id name="number" attribute-type="java.lang.String" visibile="true" id="_143508556038615"/>
+            <jpa:basic name="status" attribute-type="com.cinematographer.core.screening.Status" visibile="true" id="_143508556038616">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="User" compositePrimaryKeyType="NONE" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_143508556045817">
+        <jpa:attributes>
+            <jpa:id name="name" attribute-type="java.lang.String" visibile="true" id="_143508556045818">
+                <annotation>@javax.validation.constraints.NotNull</annotation>
+            </jpa:id>
+            <jpa:basic name="password" attribute-type="java.lang.String" visibile="true" id="_143508556045819"/>
+            <jpa:basic name="role" attribute-type="com.cinematographer.core.user.Role" visibile="true" id="_143508556045921">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:one-to-many name="reservations" target-entity="Reservation" collection-type="java.util.Collection" connected-entity-id="_14350855601784" visibile="true" id="_143508556045820"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_14350855599492">
+        <plane elementRef="_14350855599431" id="_14350855599543_p"/>
+    </jpa:diagram>
+</jpa:entity-mappings>
